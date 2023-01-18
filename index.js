@@ -3,6 +3,10 @@ const bodyParser = require('body-parser');
 const connection = require('./database/database');
 const app = express();
 
+// Carregando rotas
+const categoriesController = require('./categories/CategoriesController');
+const articlesController = require('./articles/ArticlesController');
+
 // View engine
 app.set('view engine', 'ejs');
 
@@ -26,9 +30,14 @@ connection
 
 // Middlewares
 
+app.use('/', categoriesController);
+app.use('/', articlesController);
+
 app.get('/', (req, res) => {
     res.render("index");
 });
+
+// Levantando servidor
 
 app.listen(8080, () => {
     console.log("O servidor esta online!");
