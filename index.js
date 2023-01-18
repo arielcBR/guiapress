@@ -27,6 +27,10 @@ connection
         console.log("Conexão ao BD falhou, erro: " + error);
     });
     
+// Models
+
+const Article = require('./articles/Article');
+const Category = require('./categories/Category');
 
 // Middlewares
 
